@@ -13,7 +13,7 @@ export const DesignersTopic: FC<ITopic> = ({ data, error, isPending }) => {
   return (
     <div className="flex flex-col justify-between gap-2">
       <header className="grid gap-2">
-        <UiTitleTopic text={t("top_designers")} />
+        <UiTitleTopic text={t("our_designers")} />
         <UiDivider />
       </header>
       {isPending && renderLoader()}

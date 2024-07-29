@@ -11,7 +11,7 @@ export const getIssueStats = (designers: IDesigner[]): IIssueStats => {
   });
 
   const newIssues = allIssues.filter((issue) => issue.status === IssueStatuses.New);
-  const inProgressIssues = allIssues.filter((issue) => issue.status === IssueStatuses.InProggess);
+  const inProgressIssues = allIssues.filter((issue) => issue.status === IssueStatuses.InProgress);
   const doneIssues = allIssues.filter((issue) => issue.status === IssueStatuses.Done);
 
   return { allIssues, newIssues, inProgressIssues, doneIssues };

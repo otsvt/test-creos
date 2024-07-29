@@ -11,6 +11,8 @@ export interface IIssue {
   date_started_by_designer?: string;
   date_finished_by_designer?: string;
   status: IssueStatuses;
+  income?: number;
+  expenses?: number;
 }
 
 export interface IIssueStats {
@@ -53,4 +55,11 @@ export interface ITopic {
   data: IComment[] | IDesigner[] | null;
   error: string | null;
   isPending: boolean;
+}
+
+export interface IIssuesNumber {
+  allIssues: number;
+  newIssues: number;
+  inProgressIssues: number;
+  doneIssues: number;
 }

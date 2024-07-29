@@ -1,8 +1,16 @@
 import { FC } from "react";
 import { IDesigner } from "../../../types/interfaces";
 import { UiButtonFollow } from "../buttons/UiButtonFollow";
+import { ButtonType } from "../../../types/enums";
+import { UiButtonMore } from "../buttons/UiButtonMore";
 
-export const UiItemDesigner: FC<{ designer: IDesigner }> = ({ designer }) => {
+interface UiItemDesignerProps {
+  designer: IDesigner;
+  button: ButtonType;
+  chooseDesigner?: (designer: IDesigner) => void;
+}
+
+export const UiItemDesigner: FC<UiItemDesignerProps> = ({ designer, button, chooseDesigner }) => {
   return (
     <article className="flex justify-between items-center gap-2">
       <div className="flex items-center gap-2">
@@ -14,7 +22,8 @@ export const UiItemDesigner: FC<{ designer: IDesigner }> = ({ designer }) => {
           <span className="font-medium text-xs opacity-80">{designer.username}</span>
         </div>
       </div>
-      <UiButtonFollow isFollowing={designer.isFollowing} id={designer.id} />
+      {button === ButtonType.Follow && <UiButtonFollow isFollowing={designer.isFollowing} id={designer.id} />}
+      {button === ButtonType.More && <UiButtonMore onClick={chooseDesigner!} designer={designer} />}
     </article>
   );
 };

@@ -25,6 +25,11 @@ export enum CommentNumbers {
 
 export enum IssueStatuses {
   New = "New",
-  InProggess = "InProgress",
+  InProgress = "InProgress",
   Done = "Done",
+}
+
+export enum ButtonType {
+  Follow = "Follow",
+  More = "More",
 }

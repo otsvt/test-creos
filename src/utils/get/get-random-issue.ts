@@ -16,7 +16,7 @@ const getRandomDate = (start: Date, end: Date): string => {
 };
 
 const getRandomStatus = (): IssueStatuses => {
-  const statuses = [IssueStatuses.New, IssueStatuses.InProggess, IssueStatuses.Done];
+  const statuses = [IssueStatuses.New, IssueStatuses.InProgress, IssueStatuses.Done];
   return statuses[Math.floor(Math.random() * statuses.length)];
 };
 
@@ -25,14 +25,16 @@ const createRandomIssue = (): IIssue => {
   const key = getRandomString(10);
   const date_created = getRandomDate(new Date(2023, 0, 1), new Date());
   const status = getRandomStatus();
-  let date_started_by_designer, date_finished_by_designer;
+  let date_started_by_designer, date_finished_by_designer, income, expenses;
 
-  if (status === IssueStatuses.InProggess) {
-    date_started_by_designer = getRandomDate(new Date(2023, 0, 1), new Date());
+  if (status === IssueStatuses.InProgress) {
+    date_started_by_designer = getRandomDate(new Date(date_created), new Date());
   }
   if (status === IssueStatuses.Done) {
-    date_started_by_designer = getRandomDate(new Date(2023, 0, 1), new Date());
-    date_finished_by_designer = getRandomDate(new Date(2023, 0, 1), new Date());
+    date_started_by_designer = getRandomDate(new Date(date_created), new Date());
+    date_finished_by_designer = getRandomDate(new Date(date_started_by_designer), new Date());
+    income = Math.ceil(Math.random() * (10000 - 1000) + 1000);
+    expenses = Math.ceil(Math.random() * (5000 - 500) + 500);
   }
 
   return {
@@ -42,6 +44,8 @@ const createRandomIssue = (): IIssue => {
     date_started_by_designer,
     date_finished_by_designer,
     status,
+    income,
+    expenses,
   };
 };
 

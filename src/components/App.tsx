@@ -24,7 +24,7 @@ export const App: FC = () => {
             <>
               {openedFrame === Frames.Main && <Main mainState={[commentsState, designersState]} />}
               {openedFrame === Frames.Dashboard && <Dashboard designers={designersState.data} />}
-              {openedFrame === Frames.Profiles && <Profiles />}
+              {openedFrame === Frames.Profiles && <Profiles designers={designersState.data} />}
             </>
           </CSSTransition>
         </TransitionGroup>
